@@ -8,11 +8,14 @@
 
   <link rel="shortcut icon" href="" type="image/svg+xml">
 
-  <title>Cocktail Explorer</title>
+  <title>Podcast App</title>
 
   <link href="./assets/css/style.css" rel="stylesheet">
 
   <!-- google font link -->
+
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"/>
 
   <!-- js link -->
   <script type="module" src="./assets/js/app.js" defer></script>
@@ -22,18 +25,37 @@
 
   <header>
     <!-- Logo -->
+    <div class="logo">Logo</div>
 
     <!-- Search icon -->
+    <div class="search_container">
+      <input type="text" placeholder="What do you want to play" required>
+      <i class="ri-search-line"></i>
+    </div>
 
     <!-- User Avatar -->
   </header>
 
-  <main>
-    <!-- Filter Podcasts By Buttons -->
-     <section></section>
+  <!-- Filter Podcasts By Buttons -->
+    <section class="filter_btn">
+      <p>Filter by:</p>
+      <div class="btns_container">
+        <select id="genres"> 
+          <option value="All Genres">All Genres</option>
+          <!-- Options will be populated dynamically by filters.js -->
+        </select>
 
-    <!-- Main Podcast App -->
-  </main>
+        <select id="updates"> 
+          <!-- Options will be populated dynamically by filters.js -->
+        </select>
+      </div>
+    </section>
+
+  <!-- Main Podcast App -->
+  <main id="podcast-list"></main>
+
+  <!-- Model -->
+  <section id="modal"></section>
   
 </body>
 </html>
