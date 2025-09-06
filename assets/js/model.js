@@ -13,22 +13,22 @@ function buildModal(podcast) {
     <div class="backdrop"></div>
     
     <div id="modal">
+        <!-- close button -->
+        <i class="ri-close-circle-fill" style="cursor:pointer;"></i>
+
         <div class="header">
             <h2>${podcast.title}</h2>
 
-            <!-- close button -->
-            <i class="ri-close-circle-fill" style="cursor:pointer;"></i>
+            <p class="descriptive-text">
+            ${podcast.description || "No description available"}
+            </p>
+
         </div>
       
 
         <div class="model-content">
             <img src="${podcast.image}" alt="${podcast.title} image">
-
-            <h3 class="desc-title">Description:</h3>
-            <p class="descriptive-text">
-            ${podcast.description || "No description available"}
-            </p>
-
+            
             <h3 class="genre-title">Genres:</h3>
             <div class="genres-container">
             ${(podcast.genreTitles || [])

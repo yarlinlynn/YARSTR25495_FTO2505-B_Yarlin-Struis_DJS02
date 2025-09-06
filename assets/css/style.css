@@ -185,12 +185,13 @@ header {
 }
 
 #modal {
-    width: 80%;
+    /* width: 80%; */
     background: black;
-    position: fixed;
-    top: 80%;
+    position: absolute;
+    top: 0%;
+    /* top: 80%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
     /* padding: 1rem;*/
 }
 
@@ -206,8 +207,6 @@ header {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto auto auto auto auto auto auto;
     grid-template-areas: 
-        "image title"
-        "image description"
         "image sub-title"
         "image genres"
         "image updated";
@@ -217,13 +216,18 @@ header {
     grid-area: image;
 }
 
-.model-content h3 { grid-area: title; }
+/* .model-content h3 { grid-area: title; }
 
-.descriptive-text { grid-area: description; }
+.descriptive-text { grid-area: description; } */
 
 .desc-title { grid-area: sub-title; }
 
-.genres-container { grid-area: genres; }
+.genres-container { 
+    grid-area: genres;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
 
 .genres-container > span {
     background: white;
