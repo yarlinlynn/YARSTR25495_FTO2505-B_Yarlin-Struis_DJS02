@@ -50,3 +50,13 @@ export function timeAgo(isoDate) {
   }
   return "just now";
 }
+
+export function formatDate(isoDate) {
+  if (!isoDate) return "Unknown";
+  const date = new Date(isoDate);
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
+}

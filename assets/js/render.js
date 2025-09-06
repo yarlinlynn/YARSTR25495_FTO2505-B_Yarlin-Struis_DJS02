@@ -6,7 +6,7 @@ export function renderPodcasts(podcasts, containerId = "podcast-list") {
   const container = document.getElementById(containerId);
 
   container.innerHTML = podcasts.map(p => `
-    <section class="podcast-card">
+    <section class="podcast-card" data-id="${p.id}">
       <img src="${p.image}" alt="${p.title} image">
       <h1 class="title">${p.title}</h1>
       <div class="podcast-info">
