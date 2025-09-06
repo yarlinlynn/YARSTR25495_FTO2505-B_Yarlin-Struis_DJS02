@@ -1,4 +1,161 @@
-/* imported font */
+/*-----------------------------------*\
+#CUSTOM PROPERTY
+\*-----------------------------------*/
 
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
 
-/* custom properties */
+:root {
+
+}
+
+/*-----------------------------------*\
+#RESET
+\*-----------------------------------*/
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html { 
+    font-family: "Gamja Flower", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    background: black;
+    color: white;
+}
+
+main { 
+    padding-inline: 1rem; 
+    padding-block: 1rem;
+}
+
+/*-----------------------------------*\
+#HEADER
+\*-----------------------------------*/
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding-inline: 0.5rem;
+}
+
+.search_container {
+    border: 1px solid white;
+    padding: 0.2rem 1rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 60vw;
+}
+
+.search_container input {
+    background: none;
+    width: 100%;
+    border: none;
+    padding: 0.5rem;
+}
+
+/*-----------------------------------*\
+#FILTER BUTTONS
+\*-----------------------------------*/
+
+.filter_btn {
+    margin-top: 2rem;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.filter_btn p { margin-right: 1rem; }
+
+.btns_container select {
+    color: white;
+    background: none;
+    padding-inline-start: 2px;
+    padding-inline-end: 1rem;
+    padding-block: 5px;
+    border: 1px solid white;
+    letter-spacing: 0.5px;
+    border-radius: 5px;
+}
+
+/*-----------------------------------*\
+#PODCAST LIST
+\*-----------------------------------*/
+
+.podcast-card {
+    border: 1px solid white;
+    padding-block: 1rem;
+    border-radius: 10px;
+    position: relative;
+}
+
+.title {
+    z-index: 1000;
+    /* background: black; */
+    position: absolute;
+    /* top: -15px;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+}
+
+.podcast-card img { 
+    width: 100%;
+    height: 45vh;
+}
+
+.podcast-season {
+    background: white;
+    color: black;
+    position: absolute;
+    top: 3rem;
+    padding: 5px 15px;
+}
+
+.genres-list {   
+    margin-block: 0.3rem; 
+    margin-inline: 1rem;
+}
+
+.genres-list span {
+    border: 1px solid white;
+    /* margin-inline: 1rem; */
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    background: white;
+    color: black;
+}
+
+.podcast-card .date { 
+    margin-inline: 1rem;
+    color: lightgrey; 
+}
+
+/*-----------------------------------*\
+#PODCAST PAGE
+\*-----------------------------------*/
+
+.backdrop {
+    background: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+}
+
+#modal {
+    display: none;
+}
