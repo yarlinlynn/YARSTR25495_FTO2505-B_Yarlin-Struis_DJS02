@@ -236,7 +236,11 @@ h3 { padding-block-end: 10px; }
 #MEDIA QUERIES
 \*-----------------------------------*/
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 768px) {
+
+    .podcast-card { 
+        width: 300px; 
+    }
 
     #model {
         width: 500px;
@@ -252,9 +256,7 @@ h3 { padding-block-end: 10px; }
     }
 } 
 
-@media screen and (min-width: 1000px)  {
-
-    .podcast-card { width: 300px; }
+@media screen and (min-width: 1024px)  {
 
     #modal {
         left: 50%;
