@@ -23,50 +23,43 @@ function buildModal(podcast) {
     <div class="backdrop"></div>
     
     <div id="modal">
-        <!-- close button -->
-        <i class="ri-close-circle-fill" style="cursor:pointer;"></i>
+      <div class="model-container">
+        <i class="ri-close-circle-fill"></i> <!-- close button -->
+      <h2>${podcast.title}</h2>
 
-        <div class="header">
-            <h2>${podcast.title}</h2>
+      <img src="${podcast.image}" alt="${podcast.title} image">
 
-            <p class="descriptive-text">
-            ${podcast.description || "No description available"}
-            </p>
-
-        </div>
-      
-
-        <div class="model-content">
-            <img src="${podcast.image}" alt="${podcast.title} image">
+      <p class="descriptive-text">
+          ${podcast.description || "No description available"}
+      </p>
             
-            <h3 class="genre-title">Genres:</h3>
-            <div class="genres-container">
-            ${(podcast.genreTitles || [])
-                .map(g => `<span>${g}</span>`)
-                .join("")}
-            </div>
+      <h3 class="genre-title">Genres:</h3>
+      <div class="genres-container">
+        ${(podcast.genreTitles || [])
+          .map(g => `<span>${g}</span>`)
+           .join("")}
+      </div>
 
-            <p class="date">Updated: <span>${formatDate(podcast.updated)}</span></p>
+      <p class="date">Updated: <span>${formatDate(podcast.updated)}</span></p>
 
-        </div>
 
-        <div class="seasons-container">
-          <h3>Season</h3>
-          <ul>
-            ${(podcast.seasonDetails || [])
-              .map(
-                (season, i) => `
-                <li>
-                  <div class="season-details">
-                    <p class="seasons-count">Season ${i + 1}</p>
-                    <span class="episode-count">${season.episodes} episodes</span>
-                  </div>
-                </li>
-              `
-              )
-              .join("")}
-          </ul>
-        </div>
+      <div class="seasons-container">
+        <h3>Season</h3>
+        <ul>
+          ${(podcast.seasonDetails || [])
+            .map(
+              (season, i) => `
+          <li>
+            <div class="season-details">
+              <p class="seasons-count">Season ${i + 1}</p>
+                <span class="episode-count">${season.episodes} episodes</span>
+              </div>
+          </li>
+          `
+          )
+            .join("")}
+        </ul>
+      </div>
     </div>
   `;
 
