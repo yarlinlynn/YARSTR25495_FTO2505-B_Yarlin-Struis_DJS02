@@ -1,7 +1,17 @@
 import { formatDate } from "./helper.js";
 
 /**
- * Build the modal structure 
+ * Builds a modal for a podcast, displaying its details such as title, description, genres, update date, and season information.
+ *
+ * @param {Object} podcast - The podcast object containing properties like `id`, `title`, `description`, `image`, `updated`, `genreTitles`, and `seasonDetails`.
+ * @param {string} podcast.id - The unique identifier of the podcast.
+ * @param {string} podcast.title - The title of the podcast.
+ * @param {string} [podcast.description] - The description of the podcast (optional).
+ * @param {string} podcast.image - The URL of the podcast's image.
+ * @param {string} [podcast.updated] - The ISO date string of the last update (optional).
+ * @param {string[]} [podcast.genreTitles] - Array of genre titles (optional).
+ * @param {Object[]} [podcast.seasonDetails] - Array of season objects, each with an `episodes` property (optional).
+ * @returns {HTMLElement} The constructed modal section element, ready to be appended to the DOM.
  */
 function buildModal(podcast) {
   const section = document.createElement("section");
@@ -75,7 +85,10 @@ function buildModal(podcast) {
 }
 
 /**
- * Add modal listeners on podcast cards
+ * Attaches click event listeners to podcast cards to open a modal with podcast details.
+ *
+ * @param {Object[]} linkedData - Array of podcast objects, each containing properties like `id`, `title`, `description`, `image`, `updated`, `genreTitles`, and `seasonDetails`.
+ * @param {string} [containerId="podcast-list"] - The ID of the HTML element containing podcast cards.
  */
 export function openModal(linkedData, containerId = "podcast-list") {
   const container = document.getElementById(containerId);

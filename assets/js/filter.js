@@ -3,13 +3,18 @@ import { renderPodcasts } from "./render.js";
 import { genres } from "./data.js";
 
 /**
- * Sets up the filter dropdowns for genres and updates
+ * Set up and manages podcast filtering functionality by populating genre and update dropdowns,
+ * and applying filters based on user selections.
+ *
+ * @param {Array<Object>} linkedData - Array of podcast objects, each containing properties like `genreTitles`, `updated`, and `seasons`.
+ * @param {Array<Object>} genres - Array of genre objects, each with a `title` property.
+ * @param {string} [containerId="podcast-list"] - The ID of the HTML element where filtered podcasts will be rendered.
  */
 export function filterButtons (linkedData, genres, containerId = "podcast-list") {
   const genresSelect = document.getElementById("genres");
   const updatesSelect = document.getElementById("updates");
 
-  // 1. Populate genres dropdown
+  // Populate genres dropdown
   genres.forEach(g => {
     const option = document.createElement("option");
     option.value = g.title;
@@ -17,7 +22,7 @@ export function filterButtons (linkedData, genres, containerId = "podcast-list")
     genresSelect.appendChild(option);
   });
 
-  // 2. Populate updates dropdown
+  // Populate updates dropdown
   const updateOptions = ["Recently Updated", "Most Popular", "Newest"];
   updateOptions.forEach(label => {
     const option = document.createElement("option");
@@ -26,7 +31,7 @@ export function filterButtons (linkedData, genres, containerId = "podcast-list")
     updatesSelect.appendChild(option);
   });
 
-  // 3. Apply filters when dropdowns change
+  // Apply filters when dropdowns change
   function applyFilters() {
     let filtered = [...linkedData];
 

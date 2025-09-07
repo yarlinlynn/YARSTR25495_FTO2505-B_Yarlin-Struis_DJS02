@@ -2,6 +2,12 @@ import { podcasts, genres, seasons } from "./data.js";
 import { linkPodcasts } from "./helper.js";
 import { timeAgo } from "./helper.js";
 
+/**
+ * Renders a list of podcasts as HTML cards within a specified container.
+ *
+ * @param {Object[]} podcasts - Array of podcast objects, each containing properties like `id`, `image`, `title`, `seasons`, `updated`, and `genreTitles`.
+ * @param {string} [containerId="podcast-list"] - The ID of the HTML element where the podcast cards will be rendered.
+ */
 export function renderPodcasts(podcasts, containerId = "podcast-list") {
   const container = document.getElementById(containerId);
 
