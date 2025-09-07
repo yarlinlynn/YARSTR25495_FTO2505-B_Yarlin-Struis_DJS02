@@ -74,9 +74,6 @@ header {
 
 .filter_btn {
     margin-top: 2rem;
-    /* display: flex;
-    /* justify-content: center; */
-    /* align-items: center; */ 
 }
 
 .filter_btn p { 
@@ -117,12 +114,6 @@ header {
 
 .title {
     text-align: center;
-    /* z-index: 1000;
-    /* background: black; */
-    /* position: absolute;  */
-    /* top: -15px;
-    left: 50%;
-    transform: translate(-50%, -50%); */
 }
 
 .podcast-card img { 
@@ -164,7 +155,7 @@ header {
 }
 
 /*-----------------------------------*\
-#PODCAST PAGE
+#MODEL
 \*-----------------------------------*/
 
 .podcast-modal {
@@ -190,10 +181,13 @@ header {
 
 #modal {
     position: absolute;
-    top: 0%;
-    margin: 2.5rem;
-    background: black;
+    top: 0;
+    left: 0;
     padding: 0.5rem;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 0.5rem;    
 }
 
 .model-container {
@@ -217,6 +211,14 @@ header {
     margin-block-end: 5px;
 }
 
+.genres-container span {
+    background: white;
+    border-radius: 15px;
+    padding: 5px;
+    color: black;
+    margin-left: 5px;
+ }
+
 .model-container ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -235,3 +237,68 @@ header {
 h3 { padding-block-end: 10px; }
 
 .date, .episode-count { color: lightgrey; }
+
+/*-----------------------------------*\
+#MEDIA QUERIES
+\*-----------------------------------*/
+
+/* @media screen and (min-width: 750px) {
+
+    #model {
+        width: 500px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        top: 40%;
+        /* width: 500px;
+        top: 90%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto; */
+    /* }
+
+    .model-container img { 
+        margin: auto;
+        width: 50%;
+        padding-block: 5px;
+    }
+} */ 
+
+@media screen and (min-width: 700px) {
+
+    #model {
+        width: 500px;
+        left: 50%;
+        transform: translate(-50%, 10%);
+        top: 40%;
+    }
+
+    .model-container img { 
+        margin: auto;
+        width: 50%;
+        padding-block: 5px;
+    }
+} 
+
+@media screen and (min-width: 1000px)  {
+
+    .podcast-card { width: 300px; }
+
+    #modal {
+        left: 50%;
+        transform: translate(-50%, 10%);
+        width: 700px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .podcast-card {
+        width: 400px;
+    }
+
+    #modal {
+        width: 800px;
+    }
+}
