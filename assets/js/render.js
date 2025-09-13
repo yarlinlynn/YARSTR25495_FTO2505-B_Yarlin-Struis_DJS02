@@ -67,13 +67,48 @@ export class PodcastList extends HTMLElement {
 
     this.shadowRoot.innerHTML = `
       <style>
+        .podcast-card {
+          border: 1px solid white;
+          padding: 1rem;
+          border-radius: 8px;
+          box-shadow: 0 2px 6px 10px #342c2c;
+          cursor: pointer;
+          transition: transform 0.2s;    
+        }
 
+        .podcast-img {
+          width: 100%;
+          border-radius: 6px;
+        }
+
+        .podcast-season {
+          margin: 0px;
+          font-size: 0.8rem;
+          color: var(--grey-text);
+        }
+
+        .genres-list { margin: 0.5rem 0; }
+
+        .genres-list span {
+          border: 1px solid white;
+          font-size: 12px;
+          padding: 2px 6px;
+          border-radius: 10px;
+          background: white;
+          color: black;
+          margin-right: 0.5rem;
+        }
+
+        .date {
+          margin-inline: 1rem;
+          color: lightgrey;
+        }
       </style>
 
       ${this._data.map(podcast => `
       <section class="podcast-card" data-id="${podcast.id}">
-        <img src="${podcast.image}" alt="${podcast.title}"/>
-        <h1 class="title">${podcast.title}</h1>
+        <img class="podcast-img" src="${podcast.image}" alt="${podcast.title}"/>
+        <h2 class="title">${podcast.title}</h2>
         <p class="podcast-season">Season ${podcast.seasons}</p>
         <div class="genres-list">
           ${podcast.genreTitles.map(item => `<span>${item}</span>`).join("")}
