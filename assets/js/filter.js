@@ -1,5 +1,5 @@
 
-import { renderPodcasts } from "./render.js";
+import { PodcastList } from "./render.js";
 import { genres } from "./data.js";
 
 /**
