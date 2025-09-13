@@ -1,6 +1,6 @@
 import { podcasts, genres, seasons } from "./data.js";
-import { linkPodcasts } from "./helper.js";
-import { timeAgo } from "./helper.js";
+import { linkPodcasts, timeAgo } from "./helper.js";
+// import { timeAgo } from "./helper.js";
 
 /**
  * Renders a list of podcasts as HTML cards within a specified container.
@@ -25,5 +25,36 @@ export function renderPodcasts(podcasts, containerId = "podcast-list") {
     </section>
   `).join("");
 }
+
+class PodcastList extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+  }
+
+  
+  connectedCallback() {
+    // link podcasts, genres, seasons to create to web component
+    this.data = linkPodcasts(podcasts, genres, seasons);
+    // responsible for rendering your HTML/CSS into the component’s shadow DOM.
+    this.render();
+  }
+
+  // maps through the data which is linked all the data together to use to create custom html web component
+  render() {
+    this.shadowRoot.innerHTML = `
+    
+      ${this.data.map(podcast => `
+      <section>
+        
+      </section>
+      `).join("")}
+    `;
+  }
+
+  
+}
+
+customElements.define("podcast-list", PodcastList);
 
 
