@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     list.data = linkPodcasts(podcasts, genres, seasons);
 
     // Setup modal listeners
-    openModal(linkedData);
+    openModal(linkedData, "podcast-list");
     // Filter Buttons
     filterButtons(linkedData, genres);
 });

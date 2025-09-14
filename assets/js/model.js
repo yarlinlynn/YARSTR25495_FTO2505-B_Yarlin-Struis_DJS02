@@ -13,7 +13,7 @@ import { formatDate } from "./helper.js";
  * @param {Object[]} [podcast.seasonDetails] - Array of season objects, each with an `episodes` property (optional).
  * @returns {HTMLElement} The constructed modal section element, ready to be appended to the DOM.
  */
-function buildModal(podcast) {
+export function buildModal(podcast) {
   const section = document.createElement("section");
   section.id = "podcast-modal";
   section.style.display = "block";
@@ -83,8 +83,25 @@ function buildModal(podcast) {
  * @param {Object[]} linkedData - Array of podcast objects, each containing properties like `id`, `title`, `description`, `image`, `updated`, `genreTitles`, and `seasonDetails`.
  * @param {string} [containerId="podcast-list"] - The ID of the HTML element containing podcast cards.
  */
-export function openModal(linkedData, containerId = "podcast-list") {
-  const container = document.getElementById(containerId);
+// export function openModal(linkedData, containerId = "podcast-list") {
+//   const container = document.getElementById(containerId);
+
+//   container.addEventListener("click", e => {
+//     const card = e.target.closest(".podcast-card");
+//     if (!card) return;
+
+//     const podcastId = card.dataset.id;
+//     const podcast = linkedData.find(p => p.id === podcastId);
+
+//     if (podcast) {
+//       const modal = buildModal(podcast);
+//       document.body.appendChild(modal);
+//     }
+//   });
+// }
+
+export function openModal(linkedData, containerSelector = "podcast-list") {
+  const container = document.querySelector(containerSelector);
 
   container.addEventListener("click", e => {
     const card = e.target.closest(".podcast-card");

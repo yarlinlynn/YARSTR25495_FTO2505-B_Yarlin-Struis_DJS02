@@ -1,6 +1,6 @@
 import { podcasts, genres, seasons } from "./data.js";
 import { linkPodcasts, timeAgo } from "./helper.js";
-// import { timeAgo } from "./helper.js";
+import { buildModal } from "./model.js";
 
 /**
  * Renders a list of podcasts as HTML cards within a specified container.
@@ -57,6 +57,22 @@ export class PodcastList extends HTMLElement {
   //   // responsible for rendering your HTML/CSS into the component’s shadow DOM.
   //   this.render();
   // }
+
+  // attaches a click event listener to the component
+    connectedCallback() {
+      this.shadowRoot.addEventListener("click", event => {
+        const card = event.target.closest(".podcast-card");
+        if (!card) return;
+
+        const podcastId = card.dataset.id;
+        const podcast = this._data.find(p => p.id === podcastId);
+        if (podcast) {
+          const modal = buildModal(podcast);
+          document.body.appendChild(modal);
+        } 
+      })
+    }
+
 
   // maps through the data which is linked all the data together to use to create custom html web component
   render() {
