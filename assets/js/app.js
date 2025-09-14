@@ -28,3 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
     filterButtons(linkedData, genres);
 });
 
+const container = document.querySelector(".container");
+const navToggleBtn = document.querySelector(".nav-toogle-btn");
+//   const navLinks = document.querySelectorAll(".nav-link");
+
+  const navToggleFunc = function () {
+    container.classList.toggle('active');
+    navToggleBtn.classList.toggle('active');
+  }
+
+  navToggleBtn.addEventListener('click', navToggleFunc);
+

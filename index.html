@@ -24,13 +24,23 @@
 <body>
 
   <header>
-    <img src="./assets/podcast logo.png" alt="podcast Logo" class="logo-img"/>
-    <p>Podcast</p>
-  </header>
+    <h1>🎙️ Podcast App</h1>
 
-  <!-- Filter Podcasts By Buttons -->
-    <section class="filter_btn">
-      <p>Filter by:</p>
+    <button class="nav-toogle-btn">
+      <span class="line one"></span>
+      <span class="line two"></span>
+      <span class="line three"></span>
+    </button>
+
+    <!-- <div class="search">
+      <input type="text" placeholder="Search podcast">
+       search icon -->
+      <!-- <i class="ri-search-line"></i>
+    </div> --> 
+
+    <div class="container">
+      <h3>Filter by:</h3>
+
       <div class="btns_container">
         <select id="genres"> 
           <option value="All Genres">All Genres</option>
@@ -42,7 +52,8 @@
           <!-- Options will be populated dynamically by filters.js -->
         </select>
       </div>
-    </section>
+    </div>
+  </header>
 
   <!-- Main Podcast App -->
   <podcast-list></podcast-list>
