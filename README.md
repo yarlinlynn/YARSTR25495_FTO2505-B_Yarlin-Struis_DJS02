@@ -6,6 +6,7 @@ A dynamic podcast web app that displays podcasts, allows filtering by genre and 
 
 ### 1. Render Podcasts
 - Data Linking: Combines three separate objects (podcasts, genres, seasons) into a single linkedData object for each podcast.
+- Custom Web Component: Each podcast is now encapsulated in a web component (`<podcast-list>`) which handles rendering its own markup, shadow DOM (if used), styling, and events.  
 - Dynamic DOM Rendering: Podcasts are rendered dynamically to the DOM using template strings.
 - Data includes:
     - Title
@@ -24,7 +25,7 @@ A dynamic podcast web app that displays podcasts, allows filtering by genre and 
     - Filtering dynamically re-renders the podcasts without refreshing the page.
 
 ### 3. Dynamic Modal
-- Clicking a podcast opens a modal showing detailed information.
+- Clicking a podcast (or the podcast-card component) opens a modal showing detailed information.
 - Modal data includes:
     - Title
     - Image
@@ -47,13 +48,13 @@ A dynamic podcast web app that displays podcasts, allows filtering by genre and 
 ```
 /podcast-app
 │
-├─ index.html          # Main HTML file
-├─ style.css           # Styles for layout, cards, filters, modal
-├─ main.js             # Entry point: orchestrates rendering, filters, and modal
-│
+├─ index.html          # Main HTML file: includes where the web component is defined/used
+├─ style.css           # Styles for layout, cards, filters, modal (plus any styles inside component if applicable)
+├─ main.js             # Entry point: orchestrates rendering, filters, component definitions, modal
+
 ├─ data.js             # Hardcoded podcast, genres, and seasons data
 ├─ helper.js           # Helper functions: linkPodcasts(), formatDate(), etc.
-├─ render.js           # Render podcasts to DOM using template strings
+├─ render.js           # New: Definition of custom web component for podcast cards
 ├─ modal.js            # Build dynamic modals for each podcast
 ├─ filterPodcast.js    # Filter functionality for genres and updates
 └─ README.md           # Project documentation
@@ -62,19 +63,28 @@ A dynamic podcast web app that displays podcasts, allows filtering by genre and 
 <br/>
 
 ### 6. Rendering Flow
-- Link Data: Use ``linkPodcasts()`` to combine podcasts, genres, and seasons.
-- Render Podcasts: Use ``renderPodcasts()`` to display all podcasts in the DOM.
-- Filter List: ``filterButtons()`` attaches event listeners to dropdowns to filter podcasts.
-- Dynamic Modal: ``openModal()`` attaches event listeners to podcast cards for opening the modal.
-- Helper Functions: ``formatDate()`` and other helpers provide consistent formatting.
 
-<br/>
+1. **Link Data**  
+   Use `linkPodcasts()` to combine `podcasts`, `genres`, and `seasons` into unified objects.
+
+2. **Define Web Component and Render Podcasts**  
+   In `render.js` ,define a custom element (e.g. `<podcast-list>`) that renders a podcast’s data (image, title, etc.). It handles its own template and styling. For each podcast in linked data, instantiate a `<podcast-list>` component, assign its data (attributes or via property), and append to the container in the DOM.
+
+3. **Setup Filters**  
+   `filterPodcast.js` listens to dropdown changes (genre, update type), filters the linked data accordingly, then clears and re-renders component instances based on filtered list.
+
+4. **Open Dynamic Modal**  
+   In `modal.js`, when a user clicks on a podcast card (handled either via event delegation or via custom component emitting events), open a modal that shows more details.
+
+<br>
 
 ### 9. Key Notes
-- Modular Design: Each feature (render, modal, filters) lives in its own module for clean, maintainable code (follows SOLID principles).
-- Dynamic Rendering: All podcast data and filters are generated dynamically; no hardcoded podcast cards or options in HTML.
-- Event Delegation: Modals and filters use event listeners attached at the container level to support dynamic content.
-- Helper Functions: Ensure reusable code for linking datasets and formatting dates.
+- **Component Encapsulation** — Using a custom web component improves modularity and allows each podcast card to manage its own rendering logic and styles.  
+- **Modular Design** — Each concern (data, rendering, component, modal, filtering) is separated into its own file and module.  
+- **Dynamic Rendering** — No hardcoded podcast cards or filters in HTML; everything is generated from data.  
+- **User Interaction** — Filters and modals update dynamically without page reloads.
+
+<br>
 
 #### License
 This project is for educational use only.
