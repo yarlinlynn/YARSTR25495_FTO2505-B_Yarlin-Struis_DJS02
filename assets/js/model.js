@@ -78,27 +78,13 @@ export function buildModal(podcast) {
 }
 
 /**
- * Attaches click event listeners to podcast cards to open a modal with podcast details.
- *
- * @param {Object[]} linkedData - Array of podcast objects, each containing properties like `id`, `title`, `description`, `image`, `updated`, `genreTitles`, and `seasonDetails`.
- * @param {string} [containerId="podcast-list"] - The ID of the HTML element containing podcast cards.
+ * Attaches a click event listener to a container element to open a modal
+ * when a podcast card is clicked.
+ * 
+ * The function listens for clicks inside the container (default: `<podcast-list>`),
+ * finds the nearest `.podcast-card`, looks up the corresponding podcast in `linkedData`,
+ * and if found, builds and appends a modal to the document body.
  */
-// export function openModal(linkedData, containerId = "podcast-list") {
-//   const container = document.getElementById(containerId);
-
-//   container.addEventListener("click", e => {
-//     const card = e.target.closest(".podcast-card");
-//     if (!card) return;
-
-//     const podcastId = card.dataset.id;
-//     const podcast = linkedData.find(p => p.id === podcastId);
-
-//     if (podcast) {
-//       const modal = buildModal(podcast);
-//       document.body.appendChild(modal);
-//     }
-//   });
-// }
 
 export function openModal(linkedData, containerSelector = "podcast-list") {
   const container = document.querySelector(containerSelector);

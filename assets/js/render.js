@@ -3,28 +3,12 @@ import { linkPodcasts, timeAgo } from "./helper.js";
 import { buildModal } from "./model.js";
 
 /**
- * Renders a list of podcasts as HTML cards within a specified container.
+ * Custom web component for rendering a list of podcasts.
  *
- * @param {Object[]} podcasts - Array of podcast objects, each containing properties like `id`, `image`, `title`, `seasons`, `updated`, and `genreTitles`.
- * @param {string} [containerId="podcast-list"] - The ID of the HTML element where the podcast cards will be rendered.
+ * The component uses Shadow DOM for encapsulation and dynamically
+ * renders podcast cards from provided data. Clicking a podcast card
+ * opens a modal with detailed information about the selected podcast.
  */
-// export function renderPodcasts(podcasts, containerId = "podcast-list") {
-//   const container = document.getElementById(containerId);
-
-//   container.innerHTML = podcasts.map(p => `
-//     <section class="podcast-card" data-id="${p.id}">
-//       <img src="${p.image}" alt="${p.title} image">
-//       <h1 class="title">${p.title}</h1>
-//       <div class="podcast-info">
-//         <p class="podcast-season">Season ${p.seasons}</p>
-//         <p class="date">Updated: <span>${p.updated ? timeAgo(p.updated) : "Unknown"}</span></p>
-//       </div>
-//       <div class="genres-list">
-//         ${p.genreTitles.map(g => `<span>${g}</span>`).join("")}
-//       </div>
-//     </section>
-//   `).join("");
-// }
 
 export class PodcastList extends HTMLElement {
   constructor() {
@@ -41,22 +25,6 @@ export class PodcastList extends HTMLElement {
   get data() {
     return this._data;
   }
-
-  // set data(linkedData) {
-  //   this._data = linkedData;
-  //   this.render();
-  // }
-
-  // get data() {
-  //   return this._data;
-  // }
-  
-  // connectedCallback() {
-  //   // link podcasts, genres, seasons to create to web component
-  //   this.data = linkPodcasts(podcasts, genres, seasons);
-  //   // responsible for rendering your HTML/CSS into the component’s shadow DOM.
-  //   this.render();
-  // }
 
   // attaches a click event listener to the component
     connectedCallback() {
